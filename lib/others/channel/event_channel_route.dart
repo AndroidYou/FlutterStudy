@@ -13,6 +13,7 @@ class EventChannelRoute extends StatefulWidget{
 }
 class _EventChannelRoute extends State<EventChannelRoute>{
   late EventChannel _eventChannel;
+  String content = "";
 
   @override
   void initState() {
@@ -20,6 +21,9 @@ class _EventChannelRoute extends State<EventChannelRoute>{
     _eventChannel = const EventChannel("eventChannel");
     _eventChannel.receiveBroadcastStream().listen( (event){
       print("Flutter:Flutter receive from Android:$event");
+      setState(() {
+        content = event;
+      });
     },onDone: (){
       print("完成");
     },onError: (error){
@@ -33,9 +37,11 @@ class _EventChannelRoute extends State<EventChannelRoute>{
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('EventChannel'),
+        title: const Text('EventChannel'),
       ),
-      body: Center(),
+      body: Center(
+        child: Text('Android原生发送来的消息为：$content'),
+      ),
     );
   }
 

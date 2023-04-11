@@ -14,6 +14,7 @@ class BasicMessageChannelRoute extends StatefulWidget{
 class _BasicMessageChannelRoute extends State<BasicMessageChannelRoute>{
    
   late BasicMessageChannel<String> _messageChannel;
+  String _backContent = '等待接收Android返回的值';
   @override
   void initState() {
     super.initState();
@@ -22,20 +23,39 @@ class _BasicMessageChannelRoute extends State<BasicMessageChannelRoute>{
         StringCodec());
     //设置setMessageHandler
     _messageChannel.setMessageHandler((message) async {
-      print("flutter :Message form Android reply:$message");
+       setState(() {
+          _backContent = message??"";
+       });
       return "flutter already received reply ";
     });
-    //发送消息给Android原生
-    _messageChannel.send("Hello Android,I come form Flutter");
+
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('BasicMessageChannel'),
+        title: const Text('BasicMessageChannel'),
       ),
-      body: Center(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(_backContent),
+            const SizedBox(height: 30,),
+            InkWell(
+             child: OutlinedButton(
+               onPressed: () {
+                 //发送消息给Android原生
+                 _messageChannel.send("Hello Android,I come form Flutter");
+               },
+               child: const Text("点击发送数据给Android原生"),
+
+             ),
+            )
+          ],
+        ),
+      ),
     );
   }
 

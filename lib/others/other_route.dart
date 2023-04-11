@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutterstudy/common/route_names.dart';
 import 'package:flutterstudy/others/channel/basic_message_channel.dart';
 import 'package:flutterstudy/others/channel/event_channel_route.dart';
 import 'package:flutterstudy/others/channel/method_channel_route.dart';
@@ -22,18 +23,18 @@ class _OtherRoute extends State<OtherRoute>{
         ListTile(
           title: const Text('BasicMessageChannel'),
           onTap: (){
-             Navigator.push(context, MaterialPageRoute(builder: (context)=>const BasicMessageChannelRoute()));
+             Navigator.pushNamed(context, RouteNames.othersBasicMessageChannel);
           },
         ),
         ListTile(
           title: const Text('EventChannel'),
           onTap: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>const EventChannelRoute()));
+            Navigator.pushNamed(context, RouteNames.othersEventChannel);
           },
         ), ListTile(
           title: const Text('MethodChannel'),
           onTap: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>const MethodChannelRoute()));
+            Navigator.pushNamed(context, RouteNames.othersMethodChannel);
           },
         )
       ],

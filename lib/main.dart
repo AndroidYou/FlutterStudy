@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutterstudy/common/route_data.dart';
+import 'package:flutterstudy/common/route_names.dart';
 import 'package:flutterstudy/home/home_route.dart';
+import 'package:flutterstudy/others/channel/basic_message_channel.dart';
+import 'package:flutterstudy/others/channel/event_channel_route.dart';
+import 'package:flutterstudy/others/channel/method_channel_route.dart';
 import 'package:flutterstudy/others/other_route.dart';
 
 void main() {
@@ -14,11 +19,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Flutter Study',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(),
+      routes: RouteData.initRoutes(context),
     );
   }
 }

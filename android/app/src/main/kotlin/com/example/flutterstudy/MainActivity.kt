@@ -21,9 +21,11 @@ class MainActivity: FlutterActivity() {
         messageChannel.setMessageHandler { message, reply ->
             Log.i("flutter", "android receive message form flutter :$message")
 
+            //3. 主动发送消息给Flutter
+            messageChannel.send("Hello flutter,I come form Android native")
+            return@setMessageHandler
         }
-       //3. 主动发送消息给Flutter
-        messageChannel.send("flutter");
+
 
         val eventChannel  = EventChannel(flutterEngine.dartExecutor.binaryMessenger,"eventChannel")
         eventChannel.setStreamHandler(object :StreamHandler{
@@ -46,7 +48,7 @@ class MainActivity: FlutterActivity() {
                 val  name = call.argument<String>("name")
                 val age = call.argument<Int>("age")
                 Log.i("flutter", "android receive form:$name ,$age ")
-                result.success("success")
+                result.success("谢谢Flutter  我收到了你发的消息！")
             }
 
         }

@@ -11,6 +11,7 @@ class MethodChannelRoute extends StatefulWidget{
 }
 class _MethodChannelRoute extends State<MethodChannelRoute>{
   late MethodChannel _methodChannel;
+  String resultContent = '';
   @override
   void initState() {
     super.initState();
@@ -22,9 +23,7 @@ class _MethodChannelRoute extends State<MethodChannelRoute>{
     _methodChannel.setMethodCallHandler((call) async {
 
     });
-    var map = {'name':'小明','age':18};
-   String result  = await _methodChannel.invokeMethod('openMethodChannel',map);
-   print("Flutter接收Android返回的结果:$result");
+
   }
 
   @override
@@ -33,9 +32,27 @@ class _MethodChannelRoute extends State<MethodChannelRoute>{
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('MethodChannel'),
+        title: const Text('MethodChannel'),
       ),
-      body: Center(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Android原生返回的消息:$resultContent"),
+            const SizedBox(height: 50,),
+            InkWell(child: OutlinedButton(
+              child: const Text("点击发送消息给Android原生"),
+              onPressed: () async {
+                var map = {'name':'小明','age':18};
+               String  result  = await _methodChannel.invokeMethod('openMethodChannel',map);
+                 setState(() {
+                   resultContent = result;
+                 });
+              },
+            ),)
+          ],
+        ),
+      ),
     );
   }
 
