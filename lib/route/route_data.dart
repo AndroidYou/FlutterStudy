@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutterstudy/common/route_names.dart';
-import 'package:flutterstudy/common/route_title.dart';
+import 'package:flutter/material.dart';
+import 'package:flutterstudy/route//route_names.dart';
+import 'package:flutterstudy/route/route_title.dart';
 import 'package:flutterstudy/entry/route_bean.dart';
+import 'package:flutterstudy/home/dialog/alert_dialog_route.dart';
+import 'package:flutterstudy/home/inherited_provider/provider_route.dart';
 import 'package:flutterstudy/home/inherited_widget/inherited_route.dart';
 
 import '../others/channel/basic_message_channel.dart';
@@ -13,9 +16,11 @@ class RouteData {
   static  List<RouteBean> getElements() {
     return [
       RouteBean(name: RouteTitle.inheritWidget, route: RouteNames.homeInheritedRoute),
+      RouteBean(name: RouteTitle.providerWidget, route: RouteNames.homeProviderRoute),
+      RouteBean(name: RouteTitle.dialogWidget, route: RouteNames.homeAlertDialogRoute),
     ];
   }
-  ///home
+  ///Others
   static  List<RouteBean> getOthers() {
     return [
       RouteBean(name:RouteTitle.basicMessageChannel,route:RouteNames.othersBasicMessageChannel),
@@ -28,6 +33,8 @@ class RouteData {
     return {
       ///elements
       RouteNames.homeInheritedRoute:(context) => const InheritedRoute(),
+      RouteNames.homeProviderRoute:(context) => const ProviderRoute(),
+      RouteNames.homeAlertDialogRoute:(context)=> const AlertDialogRoute(),
       ///Others
       RouteNames.othersBasicMessageChannel: (context) => const BasicMessageChannelRoute(),
       RouteNames.othersEventChannel: (context) => const EventChannelRoute(),

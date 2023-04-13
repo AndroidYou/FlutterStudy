@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterstudy/common/route_data.dart';
-import 'package:flutterstudy/common/route_names.dart';
+import 'package:flutterstudy/route/route_data.dart';
+import 'package:flutterstudy/route/route_names.dart';
 import 'package:flutterstudy/home/home_route.dart';
 import 'package:flutterstudy/others/channel/basic_message_channel.dart';
 import 'package:flutterstudy/others/channel/event_channel_route.dart';

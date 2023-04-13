@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutterstudy/common/route_names.dart';
+import 'package:flutterstudy/route/route_names.dart';
 import 'package:flutterstudy/others/channel/basic_message_channel.dart';
 import 'package:flutterstudy/others/channel/event_channel_route.dart';
 import 'package:flutterstudy/others/channel/method_channel_route.dart';

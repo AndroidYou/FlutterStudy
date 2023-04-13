@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutterstudy/home/inherited_widget/change_notifier_provider.dart';
+import 'package:flutterstudy/home/inherited_provider/change_notifier_provider.dart';
+
+import 'inherited_provider.dart';
 
 class CustomWidget<T> extends StatelessWidget{
   const CustomWidget({super.key,required this.builder});
