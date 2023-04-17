@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterstudy/home/custom_view/custom_route.dart';
 import 'package:flutterstudy/route//route_names.dart';
 import 'package:flutterstudy/route/route_title.dart';
 import 'package:flutterstudy/entry/route_bean.dart';
@@ -18,6 +19,7 @@ class RouteData {
       RouteBean(name: RouteTitle.inheritWidget, route: RouteNames.homeInheritedRoute),
       RouteBean(name: RouteTitle.providerWidget, route: RouteNames.homeProviderRoute),
       RouteBean(name: RouteTitle.dialogWidget, route: RouteNames.homeAlertDialogRoute),
+      RouteBean(name: RouteTitle.customWidget, route: RouteNames.homeCustomRoute),
     ];
   }
   ///Others
@@ -35,6 +37,7 @@ class RouteData {
       RouteNames.homeInheritedRoute:(context) => const InheritedRoute(),
       RouteNames.homeProviderRoute:(context) => const ProviderRoute(),
       RouteNames.homeAlertDialogRoute:(context)=> const AlertDialogRoute(),
+      RouteNames.homeCustomRoute:(context)=> const CustomViewRoute(),
       ///Others
       RouteNames.othersBasicMessageChannel: (context) => const BasicMessageChannelRoute(),
       RouteNames.othersEventChannel: (context) => const EventChannelRoute(),

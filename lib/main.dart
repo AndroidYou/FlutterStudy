@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterstudy/animation/animation_route.dart';
 import 'package:flutterstudy/route/route_data.dart';
 import 'package:flutterstudy/route/route_names.dart';
 import 'package:flutterstudy/home/home_route.dart';
@@ -41,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List _titles = ['控件', '动画', '框架', '其他'];
   final List<Widget> _pages = [
     const HomeRoute(),
-    const HomeRoute(),
+    const AnimationRoute(),
     const HomeRoute(),
     const OtherRoute()
   ];
@@ -67,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(_titles[_counter]),
       ),
-      body: PageView(controller: _controller,children: _pages,),
+      body: PageView(controller: _controller,physics: const NeverScrollableScrollPhysics(),children: _pages,),
       bottomNavigationBar: BottomNavigationBar(
         items: _itemBar(),
         currentIndex: _counter,
