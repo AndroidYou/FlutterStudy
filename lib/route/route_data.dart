@@ -17,11 +17,12 @@ class RouteData {
   ///home
   static  List<RouteBean> getElements() {
     return [
+      RouteBean(name: RouteTitle.baseView, route: RouteNames.homeBaseView),
       RouteBean(name: RouteTitle.inheritWidget, route: RouteNames.homeInheritedRoute),
       RouteBean(name: RouteTitle.providerWidget, route: RouteNames.homeProviderRoute),
       RouteBean(name: RouteTitle.dialogWidget, route: RouteNames.homeAlertDialogRoute),
       RouteBean(name: RouteTitle.customWidget, route: RouteNames.homeCustomRoute),
-      RouteBean(name: RouteTitle.baseView, route: RouteNames.homeBaseView)
+
     ];
   }
   ///Others

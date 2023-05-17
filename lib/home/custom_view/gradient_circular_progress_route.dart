@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterstudy/common/common_scaffold.dart';
 import 'package:flutterstudy/home/custom_view/gradient_circular_progress_indicator.dart';
+import 'package:flutterstudy/home/custom_view/horizontal_progress_bar.dart';
 
 class GradientCircularProgressRoute  extends StatefulWidget{
   const GradientCircularProgressRoute({super.key});
@@ -32,6 +33,8 @@ class _GradientCircularProgressRouteState extends State<GradientCircularProgress
            crossAxisAlignment: CrossAxisAlignment.center,
            children: [
              GradientCircularProgressIndicator(value: _controller.value, radius: 50, strokeWidth: 6, colors: const [Colors.red,Colors.orange,Colors.yellow],strokeCapRound: true,),
+             SizedBox(height: 40,),
+             HorizontalProgressBar(value: _controller.value,),
            ],
          );
        }, animation: _controller,
