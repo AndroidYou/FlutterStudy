@@ -8,14 +8,17 @@ import 'custom_view/custom_float_button.dart';
 class HomeRoute extends StatefulWidget {
   const HomeRoute({super.key});
 
+
   @override
   State<StatefulWidget> createState() => _HomeRoute();
 }
 
 class _HomeRoute extends State<HomeRoute> {
+  GlobalKey _globalKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Stack(
+      key: _globalKey,
       children: [
        ListView.separated(
             itemBuilder: (BuildContext context, int index) {
@@ -41,7 +44,10 @@ class _HomeRoute extends State<HomeRoute> {
             },
             itemCount: RouteData.getElements().length),
       //  CustomFloatButton(child: SizedBox(height: 50,width: 50,child: Container(color: Colors.red,),),top: 100,left: 300,),
-        OverlayButton(child: SizedBox(height: 50,width: 50,child: Container(color: Colors.red,),),top: 100,left: 300,)
+        OverlayButton(parentKey:_globalKey,child: SizedBox(height: 50,width: 50,child: Container(color: Colors.red,),),initOffset: Offset(100,100),onPressed: ()=>{
+          print("哈哈哈哈")
+        },
+        marginBottom: 20,marginLeft: 20,marginRight: 20,marginTop: 20,)
       ],
     );
   }

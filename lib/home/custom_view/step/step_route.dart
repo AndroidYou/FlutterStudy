@@ -25,7 +25,7 @@ class _StepViewRouteState extends State<StepViewRoute> {
     return CommonScaffold(title: "Step步骤条", child: Column(
       children: [
         Expanded(child: StepView(currentStep:2,finishedIcon: SizedBox(height: 30,width: 30,child: Image.asset("images/icon_chose.png"),), unfinishedIcon: SizedBox(width: 30,height: 30,child: Image.asset("images/icon_unchose.png"),), stepItems: items,),flex: 1,),
-        Expanded(child: StepView(currentStep:2,type: StepType.vertical,linesHeight: 40,linesWidth: 2,finishedIcon: SizedBox(height: 30,width: 30,child: Image.asset("images/icon_chose.png"),), unfinishedIcon: SizedBox(width: 30,height: 30,child: Image.asset("images/icon_unchose.png"),), stepItems:items,),flex: 1,),
+        Expanded(child: StepView(width:double.infinity,height:double.infinity,currentStep:2,type: StepType.vertical,linesHeight: 40,linesWidth: 2,finishedIcon: SizedBox(height: 30,width: 30,child: Image.asset("images/icon_chose.png"),), unfinishedIcon: SizedBox(width: 30,height: 30,child: Image.asset("images/icon_unchose.png"),), stepItems:items,),flex: 1,),
       ],
     ));
   }
