@@ -1,15 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterstudy/common/common_scaffold.dart';
 
 class CustomChessBoard extends StatelessWidget {
   const CustomChessBoard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(
+    return CommonScaffold(title: "自定义棋盘", child:  CustomPaint(
       size: const Size(300, 300),
       painter: MyCustomPainter(),
-    );
+    ));
   }
 }
 

@@ -1,7 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterstudy/home/base_view/base_view.dart';
+import 'package:flutterstudy/home/camera/CameraHomeScreen.dart';
+import 'package:flutterstudy/home/camera/take_photo_page.dart';
+import 'package:flutterstudy/home/custom_view/board_route/custom_chess_board.dart';
+import 'package:flutterstudy/home/custom_view/button/button_route.dart';
 import 'package:flutterstudy/home/custom_view/custom_route.dart';
+import 'package:flutterstudy/home/custom_view/grid_view/grid_route.dart';
+import 'package:flutterstudy/home/custom_view/navigation/navigation_route.dart';
+import 'package:flutterstudy/home/custom_view/order_view/order_route.dart';
+import 'package:flutterstudy/home/custom_view/progress/gradient_circular_progress_route.dart';
+import 'package:flutterstudy/home/custom_view/search_view/search_route.dart';
+import 'package:flutterstudy/home/custom_view/step/step_route.dart';
+import 'package:flutterstudy/home/photo/select_photo_page.dart';
 import 'package:flutterstudy/route//route_names.dart';
 import 'package:flutterstudy/route/route_title.dart';
 import 'package:flutterstudy/entry/route_bean.dart';
@@ -22,9 +33,26 @@ class RouteData {
       RouteBean(name: RouteTitle.providerWidget, route: RouteNames.homeProviderRoute),
       RouteBean(name: RouteTitle.dialogWidget, route: RouteNames.homeAlertDialogRoute),
       RouteBean(name: RouteTitle.customWidget, route: RouteNames.homeCustomRoute),
+      RouteBean(name: RouteTitle.photoView, route: RouteNames.homePhotoView),
+      RouteBean(name: RouteTitle.cameraView, route: RouteNames.homeCameraView),
 
     ];
   }
+  ///customView
+  static List<RouteBean> getCustoms(){
+    return [
+      RouteBean(name: RouteTitle.customButton, route: RouteNames.customButton),
+      RouteBean(name: RouteTitle.customBoard, route: RouteNames.customBoard),
+      RouteBean(name: RouteTitle.customProgressView, route: RouteNames.customProgressView),
+      RouteBean(name: RouteTitle.customStepView, route: RouteNames.customStepView),
+      RouteBean(name: RouteTitle.customNavigation, route: RouteNames.customNavigation),
+      RouteBean(name: RouteTitle.customOrderView, route: RouteNames.customOrderView),
+      RouteBean(name: RouteTitle.customGridView, route: RouteNames.customGridView),
+      RouteBean(name: RouteTitle.customSearchView, route: RouteNames.customSearchView),
+    ];
+  }
+
+
   ///Others
   static  List<RouteBean> getOthers() {
     return [
@@ -42,10 +70,24 @@ class RouteData {
       RouteNames.homeAlertDialogRoute:(context)=> const AlertDialogRoute(),
       RouteNames.homeCustomRoute:(context)=> const CustomViewRoute(),
       RouteNames.homeBaseView:(context) => const BaseViewRoute(),
+      RouteNames.homePhotoView:(context) =>  const SelectPhonePage(),
+      RouteNames.homeCameraView:(context) =>   TakePhotoPage(),
+
+      ///CustomView
+      RouteNames.customButton:(context) => const ButtonRoute(),
+      RouteNames.customBoard:(context) => const CustomChessBoard(),
+      RouteNames.customProgressView:(context) => const GradientCircularProgressRoute(),
+      RouteNames.customStepView:(context) => const StepViewRoute(),
+      RouteNames.customNavigation:(context) => const NavigationRoute(),
+      RouteNames.customOrderView:(context) =>  OrderRoute(),
+      RouteNames.customGridView:(context) =>   GridRoute(),
+      RouteNames.customSearchView:(context) =>   const SearchRoute(),
+
       ///Others
       RouteNames.othersBasicMessageChannel: (context) => const BasicMessageChannelRoute(),
       RouteNames.othersEventChannel: (context) => const EventChannelRoute(),
       RouteNames.othersMethodChannel: (context) => const MethodChannelRoute()
+
     };
   }
 }

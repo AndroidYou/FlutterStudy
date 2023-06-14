@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterstudy/common/common_scaffold.dart';
-import 'package:flutterstudy/home/custom_view/gradient_circular_progress_indicator.dart';
-import 'package:flutterstudy/home/custom_view/horizontal_progress_bar.dart';
+import 'package:flutterstudy/home/custom_view/progress/gradient_circular_progress_indicator.dart';
+import 'package:flutterstudy/home/custom_view/progress/horizontal_progress_bar.dart';
 
 class GradientCircularProgressRoute  extends StatefulWidget{
   const GradientCircularProgressRoute({super.key});

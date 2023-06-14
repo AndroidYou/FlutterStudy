@@ -1,20 +1,20 @@
-import 'dart:math';
+
 
 import 'package:flutter/material.dart';
 
 //步骤条
 class StepView extends StatefulWidget {
-  const StepView({
-    Key? key,
+  const StepView({super.key,
     this.type = StepType.horizontal,
     this.height = 100,
     this.width = double.infinity,
     this.linesSpace = 8,
     this.linesWidth = 40,
     this.linesHeight = 1,
+    this.textMargin = 5,
     this.mainColor = const Color(0xff62C4CA),
     this.secondColor = const Color(0xff9A9DA4),
-    this.alignment = Alignment.center,
+    this.stepAlign = StepAlign.center,
     required this.finishedIcon,
     required this.unfinishedIcon,
     required this.stepItems,
@@ -29,22 +29,35 @@ class StepView extends StatefulWidget {
   final double linesHeight;
   final Color mainColor;
   final Color secondColor;
-  final Alignment alignment;
   final Widget unfinishedIcon;
   final Widget finishedIcon;
   final List<StepItem> stepItems;
   final int currentStep;
+  final double textMargin;
+  final StepAlign stepAlign;
 
   @override
   State createState() => _StepViewState();
 }
 
 class _StepViewState extends State<StepView> {
+
+  CrossAxisAlignment _alignment = CrossAxisAlignment.start;
+  @override
+  void initState() {
+    super.initState();
+    if(widget.stepAlign == StepAlign.start){
+      _alignment = CrossAxisAlignment.start;
+    }else if(widget.stepAlign == StepAlign.center){
+      _alignment = CrossAxisAlignment.center;
+    }else{
+      _alignment = CrossAxisAlignment.end;
+    }
+  }
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: widget.height,
-      alignment: widget.alignment,
       width: widget.width,
       child: _buildView(),
     );
@@ -103,7 +116,7 @@ class _StepViewState extends State<StepView> {
             ],
           ),
           Padding(
-            padding: EdgeInsets.only(top: 5),
+            padding: EdgeInsets.only(top: widget.textMargin),
             child: views.elementAt(index),
           ),
         ],
@@ -114,51 +127,48 @@ class _StepViewState extends State<StepView> {
 
   Widget _buildVerticalItem(int index){
     var views = widget.stepItems.map((e) => _buildText(e));
-    return Container(
-      child: Row(
-
-        children: [
-          Column(
-            children: [
-              Opacity(
-                opacity: index == 0 ? 0 : 1,
-                child: Container(
-                  width: widget.linesWidth,
-                  height: widget.linesHeight,
-                  margin: EdgeInsets.only(bottom: widget.linesSpace),
-                  decoration: BoxDecoration(
-                      color: widget.stepItems.elementAt(index).state == StepItemState.finished
-                          ? widget.mainColor
-                          : widget.secondColor),
-                ),
+    return Row(
+      children: [
+        Column(
+          children: [
+            Opacity(
+              opacity: index == 0 ? 0 : 1,
+              child: Container(
+                width: widget.linesWidth,
+                height: widget.linesHeight,
+                margin: EdgeInsets.only(bottom: widget.linesSpace),
+                decoration: BoxDecoration(
+                    color: widget.stepItems.elementAt(index).state == StepItemState.finished
+                        ? widget.mainColor
+                        : widget.secondColor),
               ),
-              //_items.elementAt(index).finishedIcon,
-              if (widget.stepItems.elementAt(index).state == StepItemState.finished) widget.finishedIcon else widget.unfinishedIcon ,
-              Opacity(
-                opacity: widget.stepItems.length - 1 == index ? 0 : 1,
-                child: Container(
-                  width: widget.linesWidth,
-                  height: widget.linesHeight,
-                  margin: EdgeInsets.only(top: widget.linesSpace),
-                  decoration: BoxDecoration(
-                      color: widget.stepItems.elementAt(index).state == StepItemState.finished && index< widget.currentStep
-                          ? widget.mainColor
-                          : widget.secondColor),
-                ),
-              )
-            ],
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 5),
-            child: views.elementAt(index),
-          ),
-        ],
-      ),
+            ),
+            if (widget.stepItems.elementAt(index).state == StepItemState.finished) widget.finishedIcon else widget.unfinishedIcon ,
+            Opacity(
+              opacity: widget.stepItems.length - 1 == index ? 0 : 1,
+              child: Container(
+                width: widget.linesWidth,
+                height: widget.linesHeight,
+                margin: EdgeInsets.only(top: widget.linesSpace),
+                decoration: BoxDecoration(
+                    color: widget.stepItems.elementAt(index).state == StepItemState.finished && index< widget.currentStep
+                        ? widget.mainColor
+                        : widget.secondColor),
+              ),
+            )
+          ],
+        ),
+        Padding(
+          padding: EdgeInsets.only(left:widget.textMargin),
+          child: views.elementAt(index),
+        ),
+      ],
     );
   }
 
   Widget _buildText(StepItem stepItem) {
     return Column(
+      crossAxisAlignment: _alignment,
       children: [
         stepItem.title,
         stepItem.subtitle ?? Container(),
@@ -177,6 +187,12 @@ enum StepItemState {
   finished, //完成
   doing, // 进行中
   unfinished //未完成
+}
+
+enum StepAlign{
+  center,
+  start,
+  end
 }
 
 @immutable

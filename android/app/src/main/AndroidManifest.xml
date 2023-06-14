@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flutterstudy">
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
    <application
         android:label="flutterstudy"
         android:name="${applicationName}"

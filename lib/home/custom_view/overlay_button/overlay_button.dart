@@ -62,11 +62,7 @@ class _OverlayButtonState extends State<OverlayButton>
       _offset = _animation.value;
       setState(() {});
     });
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-      var selfSize = (context.findRenderObject() as RenderBox).size;
-      _selfWidth = selfSize.width;
-      _selfHeight = selfSize.height;
-
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       final RenderBox parentRenderBox =
       widget.parentKey.currentContext?.findRenderObject() as RenderBox;
       _screenHeight = parentRenderBox.size.height - (widget.marginBottom ?? 0.0);
@@ -84,6 +80,8 @@ class _OverlayButtonState extends State<OverlayButton>
       child: GestureDetector(
         onPanStart: (DragStartDetails details) {
           _animationController.stop(canceled: true);
+          _selfWidth = context.size?.width ??0;
+          _selfHeight =context.size?.height ??0;
         },
         onPanUpdate: (DragUpdateDetails details) {
           _offset += Offset(details.delta.dx, details.delta.dy);
@@ -106,6 +104,7 @@ class _OverlayButtonState extends State<OverlayButton>
           } else {
             _offsetLeft = 0.00 + (widget.marginLeft ?? 0.0);
           }
+
           startAnimation(details.velocity.pixelsPerSecond, size);
         },
         onTap: widget.onPressed,
