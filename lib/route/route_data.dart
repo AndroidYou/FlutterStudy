@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterstudy/framework/listview/fw_listview_route.dart';
 import 'package:flutterstudy/home/base_view/base_view.dart';
 import 'package:flutterstudy/home/camera/CameraHomeScreen.dart';
 import 'package:flutterstudy/home/camera/take_photo_page.dart';
@@ -26,68 +27,100 @@ import '../others/channel/method_channel_route.dart';
 
 class RouteData {
   ///home
-  static  List<RouteBean> getElements() {
+  static List<RouteBean> getElements() {
     return [
       RouteBean(name: RouteTitle.baseView, route: RouteNames.homeBaseView),
-      RouteBean(name: RouteTitle.inheritWidget, route: RouteNames.homeInheritedRoute),
-      RouteBean(name: RouteTitle.providerWidget, route: RouteNames.homeProviderRoute),
-      RouteBean(name: RouteTitle.dialogWidget, route: RouteNames.homeAlertDialogRoute),
-      RouteBean(name: RouteTitle.customWidget, route: RouteNames.homeCustomRoute),
+      RouteBean(
+          name: RouteTitle.inheritWidget, route: RouteNames.homeInheritedRoute),
+      RouteBean(
+          name: RouteTitle.providerWidget, route: RouteNames.homeProviderRoute),
+      RouteBean(
+          name: RouteTitle.dialogWidget,
+          route: RouteNames.homeAlertDialogRoute),
+      RouteBean(
+          name: RouteTitle.customWidget, route: RouteNames.homeCustomRoute),
       RouteBean(name: RouteTitle.photoView, route: RouteNames.homePhotoView),
       RouteBean(name: RouteTitle.cameraView, route: RouteNames.homeCameraView),
-
     ];
   }
+
   ///customView
-  static List<RouteBean> getCustoms(){
+  static List<RouteBean> getCustoms() {
     return [
       RouteBean(name: RouteTitle.customButton, route: RouteNames.customButton),
       RouteBean(name: RouteTitle.customBoard, route: RouteNames.customBoard),
-      RouteBean(name: RouteTitle.customProgressView, route: RouteNames.customProgressView),
-      RouteBean(name: RouteTitle.customStepView, route: RouteNames.customStepView),
-      RouteBean(name: RouteTitle.customNavigation, route: RouteNames.customNavigation),
-      RouteBean(name: RouteTitle.customOrderView, route: RouteNames.customOrderView),
-      RouteBean(name: RouteTitle.customGridView, route: RouteNames.customGridView),
-      RouteBean(name: RouteTitle.customSearchView, route: RouteNames.customSearchView),
+      RouteBean(
+          name: RouteTitle.customProgressView,
+          route: RouteNames.customProgressView),
+      RouteBean(
+          name: RouteTitle.customStepView, route: RouteNames.customStepView),
+      RouteBean(
+          name: RouteTitle.customNavigation,
+          route: RouteNames.customNavigation),
+      RouteBean(
+          name: RouteTitle.customOrderView, route: RouteNames.customOrderView),
+      RouteBean(
+          name: RouteTitle.customGridView, route: RouteNames.customGridView),
+      RouteBean(
+          name: RouteTitle.customSearchView,
+          route: RouteNames.customSearchView),
     ];
   }
-
 
   ///Others
-  static  List<RouteBean> getOthers() {
+  static List<RouteBean> getOthers() {
     return [
-      RouteBean(name:RouteTitle.basicMessageChannel,route:RouteNames.othersBasicMessageChannel),
-      RouteBean(name:RouteTitle.eventChannel,route:RouteNames.othersEventChannel),
-      RouteBean(name:RouteTitle.methodChannel,route:RouteNames.othersMethodChannel),
+      RouteBean(
+          name: RouteTitle.basicMessageChannel,
+          route: RouteNames.othersBasicMessageChannel),
+      RouteBean(
+          name: RouteTitle.eventChannel, route: RouteNames.othersEventChannel),
+      RouteBean(
+          name: RouteTitle.methodChannel,
+          route: RouteNames.othersMethodChannel),
     ];
   }
+
+  /// ----------------------框架----------------------*
+  static List<RouteBean> getFrameWork(){
+    return [
+      RouteBean(
+          name: RouteTitle.frameWorkListView,
+          route: RouteNames.frameWorkListView),
+    ];
+  }
+
 
   static initRoutes(BuildContext context) {
     return {
       ///elements
-      RouteNames.homeInheritedRoute:(context) => const InheritedRoute(),
-      RouteNames.homeProviderRoute:(context) => const ProviderRoute(),
-      RouteNames.homeAlertDialogRoute:(context)=> const AlertDialogRoute(),
-      RouteNames.homeCustomRoute:(context)=> const CustomViewRoute(),
-      RouteNames.homeBaseView:(context) => const BaseViewRoute(),
-      RouteNames.homePhotoView:(context) =>  const SelectPhonePage(),
-      RouteNames.homeCameraView:(context) =>   TakePhotoPage(),
+      RouteNames.homeInheritedRoute: (context) => const InheritedRoute(),
+      RouteNames.homeProviderRoute: (context) => const ProviderRoute(),
+      RouteNames.homeAlertDialogRoute: (context) => const AlertDialogRoute(),
+      RouteNames.homeCustomRoute: (context) => const CustomViewRoute(),
+      RouteNames.homeBaseView: (context) => const BaseViewRoute(),
+      RouteNames.homePhotoView: (context) => const SelectPhonePage(),
+      RouteNames.homeCameraView: (context) => TakePhotoPage(),
 
       ///CustomView
-      RouteNames.customButton:(context) => const ButtonRoute(),
-      RouteNames.customBoard:(context) => const CustomChessBoard(),
-      RouteNames.customProgressView:(context) => const GradientCircularProgressRoute(),
-      RouteNames.customStepView:(context) => const StepViewRoute(),
-      RouteNames.customNavigation:(context) => const NavigationRoute(),
-      RouteNames.customOrderView:(context) =>  OrderRoute(),
-      RouteNames.customGridView:(context) =>   GridRoute(),
-      RouteNames.customSearchView:(context) =>   const SearchRoute(),
+      RouteNames.customButton: (context) => const ButtonRoute(),
+      RouteNames.customBoard: (context) => const CustomChessBoard(),
+      RouteNames.customProgressView: (context) =>
+          const GradientCircularProgressRoute(),
+      RouteNames.customStepView: (context) => const StepViewRoute(),
+      RouteNames.customNavigation: (context) => const NavigationRoute(),
+      RouteNames.customOrderView: (context) => OrderRoute(),
+      RouteNames.customGridView: (context) => GridRoute(),
+      RouteNames.customSearchView: (context) => const SearchRoute(),
 
       ///Others
-      RouteNames.othersBasicMessageChannel: (context) => const BasicMessageChannelRoute(),
+      RouteNames.othersBasicMessageChannel: (context) =>
+          const BasicMessageChannelRoute(),
       RouteNames.othersEventChannel: (context) => const EventChannelRoute(),
-      RouteNames.othersMethodChannel: (context) => const MethodChannelRoute()
+      RouteNames.othersMethodChannel: (context) => const MethodChannelRoute(),
 
+      /// ----------------------框架----------------------*
+      RouteNames.frameWorkListView: (context) => const ListViewRoute()
     };
   }
 }

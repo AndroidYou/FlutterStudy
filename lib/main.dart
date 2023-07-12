@@ -7,6 +7,9 @@ import 'package:flutterstudy/others/channel/basic_message_channel.dart';
 import 'package:flutterstudy/others/channel/event_channel_route.dart';
 import 'package:flutterstudy/others/channel/method_channel_route.dart';
 import 'package:flutterstudy/others/other_route.dart';
+import 'package:flutterstudy/route/route_utils.dart';
+
+import 'framework/main/framework_route.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,6 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: RouteUtils.navigatorKey,
       debugShowCheckedModeBanner: false,
       title: 'Flutter Study',
       theme: ThemeData(
@@ -43,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _pages = [
     const HomeRoute(),
     const AnimationRoute(),
-    const HomeRoute(),
+    const FrameWorkRoute(),
     const OtherRoute()
   ];
    late PageController _controller;

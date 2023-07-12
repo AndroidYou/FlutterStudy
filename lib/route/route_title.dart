@@ -22,4 +22,8 @@ class RouteTitle{
   static const String eventChannel ='EventChannel';
   static const String methodChannel ='MethodChannel';
 
+
+  /// ----------------------框架----------------------*
+  static const String frameWorkListView ='ListView使用';
+
 }
