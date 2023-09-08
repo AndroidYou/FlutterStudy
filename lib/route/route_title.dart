@@ -7,6 +7,7 @@ class RouteTitle{
   static const String baseView = '基础控件';
   static const String photoView = '图片选择';
   static const String cameraView = '拍照选择';
+  static const String navigatorView = '页面跳转';
   ///自定义控件
   static const String customButton = "自定义按钮";
   static const String customBoard = "自定棋盘";

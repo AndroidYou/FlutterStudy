@@ -5,10 +5,9 @@ class RouteNames {
   static const String homeAlertDialogRoute = '/dialog_route';
   static const String homeCustomRoute = '/custom_view_route';
   static const String homeBaseView = '/base_view_route';
-
   static const String homePhotoView = '/chose_photo_route';
-
   static const String homeCameraView = '/home_camera_route';
+  static const String homeNavigator = '/home_navigator_route';
 
   ///CustomView
   static const String customButton = "/custom_button";

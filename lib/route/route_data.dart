@@ -13,6 +13,8 @@ import 'package:flutterstudy/home/custom_view/order_view/order_route.dart';
 import 'package:flutterstudy/home/custom_view/progress/gradient_circular_progress_route.dart';
 import 'package:flutterstudy/home/custom_view/search_view/search_route.dart';
 import 'package:flutterstudy/home/custom_view/step/step_route.dart';
+import 'package:flutterstudy/home/navigator/first_navigator_route.dart';
+import 'package:flutterstudy/home/navigator/second_navigator_route.dart';
 import 'package:flutterstudy/home/photo/select_photo_page.dart';
 import 'package:flutterstudy/route//route_names.dart';
 import 'package:flutterstudy/route/route_title.dart';
@@ -41,6 +43,7 @@ class RouteData {
           name: RouteTitle.customWidget, route: RouteNames.homeCustomRoute),
       RouteBean(name: RouteTitle.photoView, route: RouteNames.homePhotoView),
       RouteBean(name: RouteTitle.cameraView, route: RouteNames.homeCameraView),
+      RouteBean(name: RouteTitle.navigatorView, route: RouteNames.homeNavigator)
     ];
   }
 
@@ -93,14 +96,16 @@ class RouteData {
 
   static initRoutes(BuildContext context) {
     return {
-      ///elements
+      ///Home
       RouteNames.homeInheritedRoute: (context) => const InheritedRoute(),
       RouteNames.homeProviderRoute: (context) => const ProviderRoute(),
       RouteNames.homeAlertDialogRoute: (context) => const AlertDialogRoute(),
       RouteNames.homeCustomRoute: (context) => const CustomViewRoute(),
       RouteNames.homeBaseView: (context) => const BaseViewRoute(),
       RouteNames.homePhotoView: (context) => const SelectPhonePage(),
-      RouteNames.homeCameraView: (context) => TakePhotoPage(),
+      RouteNames.homeCameraView: (context) =>const TakePhotoPage(),
+      RouteNames.homeNavigator:(context) =>const FirstNavigatorRoute(),
+      "/second_navigator_route":(context) => const SecondNavigatorRoute(),
 
       ///CustomView
       RouteNames.customButton: (context) => const ButtonRoute(),
